@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Github, MessageCircle, Newspaper } from "lucide-react"
+import { Github, MessageCircle, Newspaper, Bot, Code, Palette } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { QRPopover } from "@/components/qr-dialog"
@@ -62,6 +62,8 @@ export default function Home() {
     })
   }
 
+  const basePath = process.env.NODE_ENV === 'production' ? '/homepage' : ''
+
   return (
     <div className="w-full">
       {/* Hero Section with About */}
@@ -69,17 +71,17 @@ export default function Home() {
         <div className="container px-4 mx-auto py-20">
           <div className="max-w-[1200px] mx-auto">
             <div className="flex items-start">
-              <div className="relative shrink-0 w-[300px] h-[300px] -ml-20">
+              <div className="relative shrink-0 w-[300px] h-[300px] rounded-2xl overflow-hidden">
                 <Image
-                  src="/icon1.jpg"
+                  src={`${basePath}/icon1.jpg`}
                   alt="个人形象"
                   fill
-                  className="object-cover"
+                  className="object-cover hover:scale-105 transition-transform duration-500"
                   sizes="300px"
                   priority
                 />
               </div>
-              <div className="flex-1 ml-20">
+              <div className="flex-1 ml-12">
                 <div className="mb-12">
                   <h1 className="text-left text-6xl font-bold tracking-tighter sm:text-7xl bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-gray-100 dark:to-gray-400 mb-6">
                     fishisnow
@@ -94,7 +96,7 @@ export default function Home() {
                         Github
                       </Button>
                     </Link>
-                    <QRPopover imagePath="/wechat.jpg" type="wechat">
+                    <QRPopover imagePath={`${basePath}/wechat.jpg`} type="wechat">
                       <Button 
                         variant="outline" 
                         className="rounded-full"
@@ -104,7 +106,7 @@ export default function Home() {
                         WeChat
                       </Button>
                     </QRPopover>
-                    <QRPopover imagePath="/official-account.jpg" type="official">
+                    <QRPopover imagePath={`${basePath}/official-account.jpg`} type="official">
                       <Button 
                         variant="outline" 
                         className="rounded-full"
@@ -124,16 +126,24 @@ export default function Home() {
                     </p>
                   </div>
 
-                  <div className="space-y-6">
-                    <h2 className="text-2xl font-semibold">技能</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                      <div className="p-4 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-lg">
+                  <div>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                      <div className="p-6 bg-white/30 dark:bg-gray-800/30 backdrop-blur-sm rounded-xl flex items-center space-x-4 hover:bg-white/50 dark:hover:bg-gray-800/50 transition-colors duration-300 shadow-sm hover:shadow-md">
+                        <div className="p-3 bg-blue-500/10 rounded-lg">
+                          <Bot className="h-6 w-6 text-blue-500" />
+                        </div>
                         <span className="font-medium">AI 应用开发</span>
                       </div>
-                      <div className="p-4 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-lg">
+                      <div className="p-6 bg-white/30 dark:bg-gray-800/30 backdrop-blur-sm rounded-xl flex items-center space-x-4 hover:bg-white/50 dark:hover:bg-gray-800/50 transition-colors duration-300 shadow-sm hover:shadow-md">
+                        <div className="p-3 bg-green-500/10 rounded-lg">
+                          <Code className="h-6 w-6 text-green-500" />
+                        </div>
                         <span className="font-medium">全栈开发</span>
                       </div>
-                      <div className="p-4 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-lg">
+                      <div className="p-6 bg-white/30 dark:bg-gray-800/30 backdrop-blur-sm rounded-xl flex items-center space-x-4 hover:bg-white/50 dark:hover:bg-gray-800/50 transition-colors duration-300 shadow-sm hover:shadow-md">
+                        <div className="p-3 bg-purple-500/10 rounded-lg">
+                          <Palette className="h-6 w-6 text-purple-500" />
+                        </div>
                         <span className="font-medium">产品设计</span>
                       </div>
                     </div>
@@ -148,10 +158,15 @@ export default function Home() {
       {/* Projects Section */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container px-4 mx-auto">
-          <h2 className="text-3xl font-bold mb-12">项目作品</h2>
+          <div className="flex justify-center mb-16">
+            <div className="relative">
+              <h2 className="text-3xl font-bold text-center">项目作品</h2>
+              <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+            </div>
+          </div>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((project) => (
-              <Card key={project.title} className="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border-none">
+              <Card key={project.title} className="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border-none transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
                 <CardHeader>
                   <CardTitle className="text-xl">{project.title}</CardTitle>
                   <CardDescription>{project.description}</CardDescription>
@@ -178,14 +193,19 @@ export default function Home() {
       {/* Blog Section */}
       <section className="py-20 bg-gray-50 dark:bg-gray-800">
         <div className="container px-4 mx-auto">
-          <h2 className="text-3xl font-bold mb-12">最新文章</h2>
+          <div className="flex justify-center mb-16">
+            <div className="relative">
+              <h2 className="text-3xl font-bold text-center">最新文章</h2>
+              <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+            </div>
+          </div>
           <div className="max-w-[800px] mx-auto">
-            <div className="relative overflow-hidden">
+            <div className="relative">
               <div className="flex flex-col space-y-4">
                 {posts.map((post, index) => (
                   <Card 
                     key={index}
-                    className="bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm border-none"
+                    className="bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm border-none transform transition-all duration-300 hover:bg-white/80 dark:hover:bg-gray-900/80 hover:shadow-md"
                   >
                     <CardHeader className="p-6">
                       <div className="flex justify-between items-center">
@@ -204,9 +224,9 @@ export default function Home() {
               <Link 
                 href="https://mp.weixin.qq.com/你的公众号" 
                 target="_blank"
-                className="inline-flex items-center text-blue-500 hover:text-blue-600 transition-colors"
+                className="inline-flex items-center text-blue-500 hover:text-blue-600 transition-colors group"
               >
-                <span className="mr-2">查看更多文章</span>
+                <span className="mr-2 group-hover:mr-3 transition-all">查看更多文章</span>
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
