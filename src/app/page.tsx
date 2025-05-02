@@ -73,7 +73,7 @@ export default function Home() {
             <div className="flex items-start">
               <div className="relative shrink-0 w-[300px] h-[300px] rounded-2xl overflow-hidden">
                 <Image
-                  src={`${basePath}/icon1.jpg`}
+                  src={`${basePath}/icon.jpg`}
                   alt="个人形象"
                   fill
                   className="object-cover hover:scale-105 transition-transform duration-500"
