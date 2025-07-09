@@ -148,14 +148,6 @@ export default function Home() {
                                     分享最新的技术思考与实践经验
                                 </p>
                             </div>
-                            <Link
-                                href="https://mp.weixin.qq.com/你的公众号"
-                                target="_blank"
-                                className="text-blue-500 hover:text-blue-600 transition-colors flex items-center group px-4 py-2 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20"
-                            >
-                                <span className="mr-2 group-hover:mr-3 transition-all font-medium">查看全部</span>
-                                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform"/>
-                            </Link>
                         </div>
 
                         <div className="space-y-8">
