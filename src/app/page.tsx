@@ -9,6 +9,12 @@ import {toast} from "sonner"
 
 const posts = [
     {
+        title: "Autogen 群聊的WebSocket多会话复用架构",
+        excerpt: "如何优化 Autogen 基于 Websocket 的多智能体群聊多会话管理与消息传递",
+        date: "2025-08-07",
+        tags: ["AI Agent", "Autogen"],
+        link: "https://mp.weixin.qq.com/s/wk-ydLlUdytg4slWlw16FA"
+    },{
         title: "AI读心术大比拼：谁家的模型更\"狡猾\"？",
         excerpt: "一个 AI 心理博弈游戏项目，实现经典的'猜2/3平均数'博弈论游戏。",
         date: "2025-05-30",
