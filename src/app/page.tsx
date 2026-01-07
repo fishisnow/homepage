@@ -90,6 +90,13 @@ const projects = [
         link: "https://invest.fishisnow.xyz/",
         tech: ["投资", "股票"]
     },
+    {
+        title: "鱼你相知",
+        description: "宠物鱼百科小程序",
+        link: "petfish.jpeg",
+        tech: ["宠物"],
+        qrCode: true
+    },
 ]
 
 export default function Home() {
@@ -125,7 +132,7 @@ export default function Home() {
                             fishisnow
                         </h1>
                         <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed font-light">
-                            AI Native Coder，探索人工智能时代的开发方式与思维转变
+                            风起于青萍之末 浪成于微澜之间
                         </p>
                         <div className="flex flex-wrap justify-center gap-4">
                             <Link href="https://github.com/fishisnow" target="_blank">
@@ -256,15 +263,24 @@ export default function Home() {
                                                 </span>
                                             ))}
                                         </div>
-                                        <Link
-                                            href={project.link}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="inline-flex items-center text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors group/link font-medium px-4 py-2 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20"
-                                        >
-                                            <span className="mr-2 group-hover/link:mr-3 transition-all">了解更多</span>
-                                            <ExternalLink className="w-4 h-4 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform"/>
-                                        </Link>
+                                        {project.qrCode ? (
+                                            <QRPopover imagePath={`${basePath}/${project.link}`} type="wechat" useDialog={true}>
+                                                <button className="inline-flex items-center text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors group/link font-medium px-4 py-2 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20">
+                                                    <span className="mr-2 group-hover/link:mr-3 transition-all">扫码体验</span>
+                                                    <ExternalLink className="w-4 h-4 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform"/>
+                                                </button>
+                                            </QRPopover>
+                                        ) : (
+                                            <Link
+                                                href={project.link}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="inline-flex items-center text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors group/link font-medium px-4 py-2 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20"
+                                            >
+                                                <span className="mr-2 group-hover/link:mr-3 transition-all">了解更多</span>
+                                                <ExternalLink className="w-4 h-4 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform"/>
+                                            </Link>
+                                        )}
                                     </CardContent>
                                 </Card>
                             ))}
