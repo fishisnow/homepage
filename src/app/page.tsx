@@ -9,6 +9,20 @@ import {toast} from "sonner"
 
 const posts = [
     {
+        title: "Manus 卖了 20 亿美金，值还是不值？",
+        excerpt: "分析 Manus 价值几何以及对 Meta 的战略意义",
+        date: "2025-12-31",
+        tags: ["AI Agent"],
+        link: "https://mp.weixin.qq.com/s/okZfjpaLqj0ka72eDc4mzA"
+    },
+    {
+        title: "万亿美元角逐：AI正在撕裂传统数据中心",
+        excerpt: "分析 AI 对传统数据中心行业的冲击与变革",
+        date: "2025-11-03",
+        tags: ["AIDC"],
+        link: "https://mp.weixin.qq.com/s/h5F_Uv_Wyg3pcyFptqnX_g"
+    },
+    {
         title: "Autogen 群聊的WebSocket多会话复用架构",
         excerpt: "如何优化 Autogen 基于 Websocket 的多智能体群聊多会话管理与消息传递",
         date: "2025-08-07",
@@ -69,6 +83,12 @@ const projects = [
         description: "让各大厂商的 AI 参与一个 2/3 平均数的心理博弈游戏，看看谁笑到最后！",
         link: "https://fishisnow.github.io/ai-game-theory/",
         tech: ["AI比赛", "心理学"]
+    },
+    {
+        title: "股市望远镜",
+        description: "记录投资灵感与市场观察的工具",
+        link: "https://invest.fishisnow.xyz/",
+        tech: ["投资", "股票"]
     },
 ]
 
@@ -211,7 +231,7 @@ export default function Home() {
                                 项目作品
                             </h2>
                             <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
-                                探索 AI 时代的创新应用与工具开发
+                                AI writes code. Humans own the bugs.
                             </p>
                         </div>
                         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
