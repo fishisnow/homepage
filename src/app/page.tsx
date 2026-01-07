@@ -117,21 +117,23 @@ export default function Home() {
     return (
         <div className="w-full min-h-screen">
             {/* Hero Section - Enhanced */}
-            <section className="relative py-24 md:py-32 bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 overflow-hidden">
+            <section className="relative py-16 md:py-20 bg-gradient-to-br from-background via-secondary/20 to-muted overflow-hidden">
                 {/* Background decoration */}
-                <div className="absolute inset-0 bg-grid-pattern opacity-5 dark:opacity-10"></div>
-                <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-100 dark:bg-blue-900/20 rounded-full blur-3xl opacity-30 animate-pulse"></div>
-                <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-purple-100 dark:bg-purple-900/20 rounded-full blur-3xl opacity-30 animate-pulse delay-1000"></div>
+                <div className="absolute inset-0 opacity-5 dark:opacity-10">
+                  <div className="absolute top-20 right-20 w-24 h-24 border border-accent/30 rounded-full animate-float"></div>
+                </div>
+                <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl opacity-30 animate-pulse"></div>
+                <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-accent/5 rounded-full blur-3xl opacity-30 animate-pulse delay-1000"></div>
                 
                 <div className="container px-4 mx-auto relative z-10">
                     <div className="max-w-4xl mx-auto text-center">
                         <div className="inline-block mb-6 px-4 py-2 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full text-sm font-medium">
                             👋 欢迎来到我的数字空间
                         </div>
-                        <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8 bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 dark:from-white dark:via-gray-200 dark:to-white bg-clip-text text-transparent">
+                        <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 calligraphy bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
                             fishisnow
                         </h1>
-                        <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed font-light">
+                        <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed font-light">
                             风起于青萍之末 浪成于微澜之间
                         </p>
                         <div className="flex flex-wrap justify-center gap-4">
@@ -174,7 +176,7 @@ export default function Home() {
                     <div className="max-w-5xl mx-auto">
                         <div className="flex items-center justify-between mb-16">
                             <div>
-                                <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
+                                <h2 className="text-4xl font-bold mb-4 calligraphy bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                                     最新文章
                                 </h2>
                                 <p className="text-gray-600 dark:text-gray-400 text-lg">
@@ -209,7 +211,7 @@ export default function Home() {
                                                 {post.tags.map((tag, tagIndex) => (
                                                     <span
                                                         key={tagIndex}
-                                                        className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/30 dark:to-purple-900/30 text-blue-700 dark:text-blue-300 text-sm rounded-full font-medium border border-blue-100 dark:border-blue-800 hover:shadow-md transition-shadow"
+                                                        className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-secondary/60 to-muted/40 dark:from-secondary/20 dark:to-muted/20 text-primary dark:text-primary-foreground text-sm rounded-full font-medium border border-primary/20 dark:border-primary/30 hover:shadow-md transition-shadow"
                                                     >
                                                         <Tag className="w-3 h-3 mr-1" />
                                                         {tag}
@@ -234,7 +236,7 @@ export default function Home() {
                 <div className="container px-4 mx-auto">
                     <div className="max-w-5xl mx-auto">
                         <div className="text-center mb-16">
-                            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
+                            <h2 className="text-4xl font-bold mb-4 calligraphy bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                                 项目作品
                             </h2>
                             <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
@@ -244,7 +246,7 @@ export default function Home() {
                         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                             {projects.map((project, index) => (
                                 <Card key={index} className="group hover:shadow-2xl transition-all duration-300 border-2 border-gray-100 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-700 bg-white dark:bg-gray-800 rounded-2xl overflow-hidden hover:-translate-y-2">
-                                    <CardHeader className="pb-4 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20">
+                                    <CardHeader className="pb-4 bg-gradient-to-br from-secondary/50 to-muted/30 dark:from-secondary/10 dark:to-muted/10">
                                         <CardTitle className="text-xl font-bold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                                             {project.title}
                                         </CardTitle>
@@ -257,7 +259,7 @@ export default function Home() {
                                             {project.tech.map((tech, techIndex) => (
                                                 <span
                                                     key={techIndex}
-                                                    className="px-3 py-1 bg-gradient-to-r from-blue-100 to-blue-50 dark:from-blue-900/40 dark:to-blue-800/40 text-blue-700 dark:text-blue-300 text-sm rounded-full font-medium border border-blue-200 dark:border-blue-700"
+                                                    className="px-3 py-1 bg-gradient-to-r from-muted to-secondary/60 dark:from-muted/20 dark:to-secondary/20 text-primary dark:text-primary-foreground text-sm rounded-full font-medium border border-primary/20 dark:border-primary/30"
                                                 >
                                                     {tech}
                                                 </span>
@@ -294,7 +296,7 @@ export default function Home() {
                 <div className="container px-4 mx-auto">
                     <div className="max-w-4xl mx-auto text-center">
                         <div className="mb-8">
-                            <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                            <h3 className="text-2xl font-bold mb-4 calligraphy bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
                                 fishisnow
                             </h3>
                             <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">

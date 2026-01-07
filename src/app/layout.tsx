@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/layout/site-header";
 import { Toaster } from "@/components/ui/sonner";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "fishisnow.AI | 太善",
@@ -36,8 +33,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="zh" className="scroll-smooth">
-      <body className={inter.className}>
-        <div className="relative min-h-screen">
+      <body className="font-sans">
+        <div className="relative min-h-screen ink-wash-bg">
           <SiteHeader />
           <main className="pt-16">{children}</main>
           <footer className="py-8 text-center text-sm text-gray-500">
