@@ -2,7 +2,7 @@
 
 import {Button} from "@/components/ui/button"
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card"
-import {Github, MessageCircle, Newspaper, ExternalLink, ArrowRight, Calendar, Tag} from "lucide-react"
+import {Github, MessageCircle, Newspaper, ArrowRight, Calendar, Tag} from "lucide-react"
 import Link from "next/link"
 import {QRPopover} from "@/components/qr-dialog"
 import {toast} from "sonner"
