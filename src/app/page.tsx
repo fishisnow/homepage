@@ -232,7 +232,7 @@ export default function Home() {
             </section>
 
             {/* Projects Section - Enhanced */}
-            <section id="projects" className="py-24 bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800">
+            <section id="projects" className="py-24 ink-wash-bg relative">
                 <div className="container px-4 mx-auto">
                     <div className="max-w-5xl mx-auto">
                         <div className="text-center mb-16">
@@ -244,88 +244,92 @@ export default function Home() {
                             </p>
                         </div>
                         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                            {projects.map((project, index) => (
-                                <Card key={index} className="group hover:shadow-2xl transition-all duration-300 border-2 border-gray-100 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-700 bg-white dark:bg-gray-800 rounded-2xl overflow-hidden hover:-translate-y-2">
-                                    <CardHeader className="pb-4 bg-gradient-to-br from-secondary/50 to-muted/30 dark:from-secondary/10 dark:to-muted/10">
-                                        <CardTitle className="text-xl font-bold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                                            {project.title}
-                                        </CardTitle>
-                                        <CardDescription className="text-base leading-relaxed">
-                                            {project.description}
-                                        </CardDescription>
-                                    </CardHeader>
-                                    <CardContent className="pt-6">
-                                        <div className="flex flex-wrap gap-2 mb-6">
-                                            {project.tech.map((tech, techIndex) => (
-                                                <span
-                                                    key={techIndex}
-                                                    className="px-3 py-1 bg-gradient-to-r from-muted to-secondary/60 dark:from-muted/20 dark:to-secondary/20 text-primary dark:text-primary-foreground text-sm rounded-full font-medium border border-primary/20 dark:border-primary/30"
-                                                >
-                                                    {tech}
-                                                </span>
-                                            ))}
-                                        </div>
-                                        {project.qrCode ? (
-                                            <QRPopover imagePath={`${basePath}/${project.link}`} type="wechat" useDialog={true}>
-                                                <button className="inline-flex items-center text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors group/link font-medium px-4 py-2 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20">
-                                                    <span className="mr-2 group-hover/link:mr-3 transition-all">扫码体验</span>
-                                                    <ExternalLink className="w-4 h-4 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform"/>
-                                                </button>
-                                            </QRPopover>
-                                        ) : (
-                                            <Link
-                                                href={project.link}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="inline-flex items-center text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors group/link font-medium px-4 py-2 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20"
-                                            >
-                                                <span className="mr-2 group-hover/link:mr-3 transition-all">了解更多</span>
-                                                <ExternalLink className="w-4 h-4 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform"/>
-                                            </Link>
-                                        )}
-                                    </CardContent>
-                                </Card>
-                            ))}
+                            {projects.map((project, index) => {
+                                const cardContent = (
+                                    <Card className="group hover:shadow-2xl transition-all duration-300 border border-border/50 hover:border-accent/50 bg-card/80 backdrop-blur-md rounded-2xl overflow-hidden hover:-translate-y-2 shadow-lg flex flex-col h-full cursor-pointer">
+                                        <CardHeader className="pb-4">
+                                            <CardTitle className="text-xl font-bold calligraphy group-hover:text-accent transition-colors mb-2">
+                                                {project.title}
+                                            </CardTitle>
+                                            <CardDescription className="text-base leading-relaxed">
+                                                {project.description}
+                                            </CardDescription>
+                                        </CardHeader>
+                                        <CardContent className="flex-1 flex flex-col justify-end pb-6">
+                                            <div className="flex flex-wrap gap-2">
+                                                {project.tech.map((tech, techIndex) => (
+                                                    <span
+                                                        key={techIndex}
+                                                        className="px-3 py-1 bg-gradient-to-r from-muted/60 to-secondary/40 dark:from-muted/30 dark:to-secondary/20 text-foreground text-sm rounded-full font-medium border border-accent/20 dark:border-accent/30"
+                                                    >
+                                                        {tech}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </CardContent>
+                                    </Card>
+                                );
+
+                                if (project.qrCode) {
+                                    return (
+                                        <QRPopover key={index} imagePath={`${basePath}/${project.link}`} type="wechat" useDialog={true}>
+                                            {cardContent}
+                                        </QRPopover>
+                                    );
+                                }
+
+                                return (
+                                    <Link
+                                        key={index}
+                                        href={project.link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="block"
+                                    >
+                                        {cardContent}
+                                    </Link>
+                                );
+                            })}
                         </div>
                     </div>
                 </div>
             </section>
 
             {/* Footer Section */}
-            <footer className="py-16 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+            <footer className="py-8 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
                 <div className="container px-4 mx-auto">
                     <div className="max-w-4xl mx-auto text-center">
-                        <div className="mb-8">
-                            <h3 className="text-2xl font-bold mb-4 calligraphy bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
+                        <div className="mb-4">
+                            <h3 className="text-xl font-bold mb-2 calligraphy bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
                                 fishisnow
                             </h3>
-                            <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                            <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed text-sm">
                                 探索 AI 时代的开发方式与思维转变，分享技术实践与创新思考
                             </p>
                         </div>
                         
-                        <div className="flex justify-center space-x-8 mb-8">
+                        <div className="flex justify-center items-center space-x-6">
                             <Link 
                                 href="https://github.com/fishisnow" 
                                 target="_blank"
-                                className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors"
+                                className="flex-shrink-0 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors"
                             >
-                                <Github className="w-6 h-6" />
+                                <Github className="w-5 h-5" />
                             </Link>
-                            <QRPopover imagePath={`${basePath}/wechat.jpg`} type="wechat">
-                                <button className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors">
-                                    <MessageCircle className="w-6 h-6" />
-                                </button>
-                            </QRPopover>
-                            <QRPopover imagePath={`${basePath}/official-account.jpg`} type="official">
-                                <button className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors">
-                                    <Newspaper className="w-6 h-6" />
-                                </button>
-                            </QRPopover>
-                        </div>
-                        
-                        <div className="text-sm text-gray-500 dark:text-gray-400">
-                            <p>© 2025 fishisnow. 用心分享技术与思考。</p>
+                            <div className="flex-shrink-0">
+                                <QRPopover imagePath={`${basePath}/wechat.jpg`} type="wechat">
+                                    <button className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors">
+                                        <MessageCircle className="w-5 h-5" />
+                                    </button>
+                                </QRPopover>
+                            </div>
+                            <div className="flex-shrink-0">
+                                <QRPopover imagePath={`${basePath}/official-account.jpg`} type="official">
+                                    <button className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors">
+                                        <Newspaper className="w-5 h-5" />
+                                    </button>
+                                </QRPopover>
+                            </div>
                         </div>
                     </div>
                 </div>

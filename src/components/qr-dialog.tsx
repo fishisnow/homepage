@@ -54,7 +54,7 @@ export function QRPopover({ children, imagePath, type, useDialog = false }: QRPo
   return (
     <TooltipProvider delayDuration={0}>
       <Tooltip>
-        <TooltipTrigger asChild>
+        <TooltipTrigger asChild className="inline-flex">
           {children}
         </TooltipTrigger>
         <TooltipContent 
