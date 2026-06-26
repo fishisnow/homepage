@@ -2,70 +2,24 @@
 
 import {Button} from "@/components/ui/button"
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card"
-import {Github, MessageCircle, Newspaper, ArrowRight, Calendar, Tag} from "lucide-react"
+import {Github, Newspaper} from "lucide-react"
 import Link from "next/link"
 import {QRPopover} from "@/components/qr-dialog"
 import {toast} from "sonner"
 
-const posts = [
-    {
-        title: "Manus 卖了 20 亿美金，值还是不值？",
-        excerpt: "分析 Manus 价值几何以及对 Meta 的战略意义",
-        date: "2025-12-31",
-        tags: ["AI Agent"],
-        link: "https://mp.weixin.qq.com/s/okZfjpaLqj0ka72eDc4mzA"
-    },
-    {
-        title: "万亿美元角逐：AI正在撕裂传统数据中心",
-        excerpt: "分析 AI 对传统数据中心行业的冲击与变革",
-        date: "2025-11-03",
-        tags: ["AIDC"],
-        link: "https://mp.weixin.qq.com/s/h5F_Uv_Wyg3pcyFptqnX_g"
-    },
-    {
-        title: "Autogen 群聊的WebSocket多会话复用架构",
-        excerpt: "如何优化 Autogen 基于 Websocket 的多智能体群聊多会话管理与消息传递",
-        date: "2025-08-07",
-        tags: ["AI Agent", "Autogen"],
-        link: "https://mp.weixin.qq.com/s/wk-ydLlUdytg4slWlw16FA"
-    },{
-        title: "AI读心术大比拼：谁家的模型更\"狡猾\"？",
-        excerpt: "一个 AI 心理博弈游戏项目，实现经典的'猜2/3平均数'博弈论游戏。",
-        date: "2025-05-30",
-        tags: ["AI", "游戏"],
-        link: "https://mp.weixin.qq.com/s/xHYKh4c0n0Ns4DHsWGWaIg"
-    },
-    {
-        title: "midscene-browser：让AI化身浏览器\"小助手\"",
-        excerpt: "基于 Midscene.js 开发的 Chrome 浏览器自动化插件",
-        date: "2025-05-06",
-        tags: ["Chrome 插件", "工具"],
-        link: "https://mp.weixin.qq.com/s/ZFjuhNN5gcOzuvI9xnyVgQ"
-    },
-    {
-        title: "Manus, 你再不出道你就 Out 了！AI 智能体的生死竞速与未来突围",
-        excerpt: "探讨大模型与 AI Agent 产品的囚徒困境",
-        date: "2025-04-18",
-        tags: ["产品", "创业"],
-        link: "https://mp.weixin.qq.com/s/EVqxuF_zt854TNJk1HP9AQ"
-    },
-    {
-        title: "AI太猛了！摸鱼半天，我竟然开发了一个网站！",
-        excerpt: "使用 Cursor 体验氛围编程的威力",
-        date: "2025-03-28",
-        tags: ["AI", "编程思维", "未来技术"],
-        link: "https://mp.weixin.qq.com/s/AHeyfkdruBnuvRwCCGBYVQ"
-    },
-    {
-        title: "DeepSeek的技术突破：人工智能发展的三大动力与新变革",
-        excerpt: "从 DeepSeek 的突破，探讨 AI 未来发展的方向。",
-        date: "2025-02-04",
-        tags: ["大模型"],
-        link: "https://mp.weixin.qq.com/s/g2E1jLFxG7B6G3w7xIb8Tg"
-    },
-]
-
 const projects = [
+    {
+        title: "AI Image & Video Generator",
+        description: "AI 图片和视频创作平台",
+        link: "https://pixae.app",
+        tech: ["AI", "图片", "视频"]
+    },
+    {
+        title: "Square Face Generator",
+        description: "一个复古 flash 技术的头像生成器现代重制版",
+        link: "https://squareface.me",
+        tech: ["头像生成", "Flash"]
+    },
     {
         title: "Midscene Browser",
         description: "让 AI 替您操作浏览器的插件",
@@ -90,22 +44,9 @@ const projects = [
         link: "https://invest.fishisnow.xyz/",
         tech: ["投资", "股票"]
     },
-    {
-        title: "鱼你相知",
-        description: "宠物鱼百科小程序",
-        link: "petfish.jpeg",
-        tech: ["宠物"],
-        qrCode: true
-    },
 ]
 
 export default function Home() {
-    const handleCopyWeChat = () => {
-        navigator.clipboard.writeText("fishisnow").then(() => {
-            toast.success("微信号已复制")
-        })
-    }
-
     const handleCopyOfficial = () => {
         navigator.clipboard.writeText("fishisnow").then(() => {
             toast.success("公众号已复制")
@@ -143,17 +84,14 @@ export default function Home() {
                                     Github
                                 </Button>
                             </Link>
-                            <QRPopover imagePath={`${basePath}/wechat.jpg`} type="wechat">
-                                <Button
-                                    variant="outline"
-                                    size="lg"
-                                    onClick={handleCopyWeChat}
-                                    className="group border-2 hover:border-green-400 transition-all duration-300 hover:shadow-lg"
-                                >
-                                    <MessageCircle className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform"/>
-                                    WeChat
+                            <Link href="https://x.com/fishisnowx" target="_blank" rel="noopener noreferrer">
+                                <Button variant="outline" size="lg" className="group border-2 hover:border-gray-400 transition-all duration-300 hover:shadow-lg">
+                                    <svg className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                                    </svg>
+                                    Twitter
                                 </Button>
-                            </QRPopover>
+                            </Link>
                             <QRPopover imagePath={`${basePath}/official-account.jpg`} type="official">
                                 <Button
                                     variant="outline"
@@ -170,69 +108,8 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* Featured Articles Section - Enhanced */}
-            <section id="articles" className="py-24 bg-white dark:bg-gray-900 relative">
-                <div className="container px-4 mx-auto">
-                    <div className="max-w-5xl mx-auto">
-                        <div className="flex items-center justify-between mb-16">
-                            <div>
-                                <h2 className="text-4xl font-bold mb-4 calligraphy bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                                    最新文章
-                                </h2>
-                                <p className="text-gray-600 dark:text-gray-400 text-lg">
-                                    分享最新的技术思考与实践经验
-                                </p>
-                            </div>
-                        </div>
-
-                        <div className="space-y-8">
-                            {posts.map((post, index) => (
-                                <Link key={index} href={post.link}>
-                                    <article className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl border border-gray-100 dark:border-gray-700 transition-all duration-300 cursor-pointer group hover:-translate-y-1">
-                                        <div className="flex items-start justify-between mb-6">
-                                            <div className="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
-                                                <div className="flex items-center space-x-2">
-                                                    <Calendar className="w-4 h-4" />
-                                                    <time dateTime={post.date}>{post.date}</time>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <h3 className="text-2xl md:text-3xl font-bold mb-4 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-tight">
-                                            {post.title}
-                                        </h3>
-
-                                        <p className="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed text-lg">
-                                            {post.excerpt}
-                                        </p>
-
-                                        <div className="flex items-center justify-between">
-                                            <div className="flex flex-wrap gap-3">
-                                                {post.tags.map((tag, tagIndex) => (
-                                                    <span
-                                                        key={tagIndex}
-                                                        className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-secondary/60 to-muted/40 dark:from-secondary/20 dark:to-muted/20 text-primary dark:text-primary-foreground text-sm rounded-full font-medium border border-primary/20 dark:border-primary/30 hover:shadow-md transition-shadow"
-                                                    >
-                                                        <Tag className="w-3 h-3 mr-1" />
-                                                        {tag}
-                                                    </span>
-                                                ))}
-                                            </div>
-                                            <div className="flex items-center text-blue-500 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors font-medium">
-                                                <span className="mr-2 group-hover:mr-3 transition-all">阅读更多</span>
-                                                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform"/>
-                                            </div>
-                                        </div>
-                                    </article>
-                                </Link>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             {/* Projects Section - Enhanced */}
-            <section id="projects" className="py-24 ink-wash-bg relative">
+            <section id="projects" className="py-24 bg-white dark:bg-gray-900 ink-wash-bg relative">
                 <div className="container px-4 mx-auto">
                     <div className="max-w-5xl mx-auto">
                         <div className="text-center mb-16">
@@ -316,13 +193,16 @@ export default function Home() {
                             >
                                 <Github className="w-5 h-5" />
                             </Link>
-                            <div className="flex-shrink-0">
-                                <QRPopover imagePath={`${basePath}/wechat.jpg`} type="wechat">
-                                    <button className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors">
-                                        <MessageCircle className="w-5 h-5" />
-                                    </button>
-                                </QRPopover>
-                            </div>
+                            <Link
+                                href="https://x.com/fishisnowx"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex-shrink-0 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors"
+                            >
+                                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                                </svg>
+                            </Link>
                             <div className="flex-shrink-0">
                                 <QRPopover imagePath={`${basePath}/official-account.jpg`} type="official">
                                     <button className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors">

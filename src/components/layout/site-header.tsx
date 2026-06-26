@@ -21,12 +21,6 @@ export function SiteHeader() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <Link
-              href="#articles"
-              className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 transition-all duration-300 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
-            >
-              文章
-            </Link>
-            <Link
               href="#projects"
               className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 transition-all duration-300 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
             >
@@ -51,13 +45,6 @@ export function SiteHeader() {
         {isMobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-gray-200/50 dark:border-gray-800/50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md">
             <nav className="flex flex-col space-y-2">
-              <Link
-                href="#articles"
-                className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 transition-colors px-3 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                文章
-              </Link>
               <Link
                 href="#projects"
                 className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 transition-colors px-3 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
